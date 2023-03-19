@@ -1,9 +1,16 @@
 <template >
-    <div class="card card-compact w-72 bg-base-100 shadow-xl m-2">
-        <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+    <div class="card card-compact w-72 bg-base-100 shadow-xl m-2" @click="toEnroll">
+        <figure><img src="http://yun.itheima.com/Upload/Images/20211231/61ce744050fc1.jpg" /></figure>
         <div class="card-body">
-            <h2 class="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div class="card-title text-base justify-around">
+                <div>前端web入门</div>
+                <div>2022年3月3日</div>
+            </div>
         </div>
     </div>
 </template>
+<script setup>
+import { useRouter } from 'vue-router';
+const router = useRouter();
+const toEnroll = () => router.push("/student/enroll");
+</script>

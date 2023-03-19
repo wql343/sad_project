@@ -20,9 +20,18 @@
                         </label>
                         <input type="text" placeholder="password" class="input input-bordered" v-model="form.password" />
                         <label class="label">
-                            <router-link to="/register" class="label-text-alt link link-hover">还未注册？</router-link>
+                            <span class="label-text">身份</span>
+                        </label>
+                        <select class="select select-bordered w-full max-w-xs" v-model="form.status">
+                            <option disabled selected>选择登入身份</option>
+                            <option v-for="(item, status) in info" :key="status" :value="status">{{ item.name }}</option>
+                        </select>
+                        <label class="label">
+                            <router-link to="/register" class="label-text-alt link link-hover"
+                                v-if="form.status == 0">还未注册？</router-link>
                         </label>
                     </div>
+
                     <div class="form-control mt-6">
                         <button class="btn btn-primary" @click="login">登录</button>
                     </div>
@@ -34,10 +43,37 @@
 <script setup>
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import { useStatusStore } from '../../store/index.js';
+import { storeToRefs } from 'pinia';
 const router = useRouter();
+const statusStore = useStatusStore();
+// const status = storeToRefs(statusStore).status.value;
+const info = [
+    { path: '/student', name: '学员', status: 0 },
+    { path: '/company', name: '软件公司', status: 1 },
+    { path: '/employee', name: '员工', status: 2 }
+];
 const form = reactive({
     account: '',
-    password: ''
+    password: '',
+    status: ''
 })
-const login = () => router.push('/') 
+const login = () => {
+    // console.log(status);
+    // localStorage.setItem('token',status);
+    // const info = localStorage.getItem('token');
+    // console.log(info);
+    // switch (statusStore.status) {
+    //     case 0: router.push('/student'); break;
+    //     case 1: router.push('/company'); break;
+    //     case 2: router.push('/employee'); break;
+    // }
+    localStorage.removeItem('token')
+    localStorage.setItem('token', JSON.stringify(form));
+    switch (form.status) {
+        case 0: router.push('/student'); break;
+        case 1: router.push('/company'); break;
+        case 2: router.push('/employee'); break;
+    }
+} 
 </script>

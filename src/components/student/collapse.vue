@@ -8,14 +8,14 @@
         </div>
         <div v-if="isChecked"
             class="collapse-content  bg-info text-info-content peer-checked:bg-base-200 peer-checked:text-base-content flex flex-wrap ">
-            <card/>
-            <card/>
-            <card/>
+            <Card/>
+            <Card/>
+            <Card/>
         </div>
     </div>
 </template>
 <script setup>
-import card from './card.vue'
+import Card from './card.vue'
 import { ref } from 'vue'
 const isChecked = ref(true)
 const change = () => {

@@ -55,14 +55,14 @@
         <div class="text-xl font-black ml-4 mt-8 mb-4">
             可报名课程
         </div>
-        <collapse />
-        <collapse />
-        <collapse />
-        <collapse />
+        <Collapse />
+        <Collapse />
+        <Collapse />
+        <Collapse />
     </div>
 </template>
 <script setup>
-import collapse from '../../components/student/collapse.vue'
+import Collapse from '../../components/student/collapse.vue'
 import { ref } from 'vue'
 const isChecked = ref(true)
 const change = () => {

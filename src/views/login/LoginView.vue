@@ -16,6 +16,12 @@
                     </div>
                     <div class="form-control">
                         <label class="label">
+                            <span class="label-text">名称</span>
+                        </label>
+                        <input type="text" placeholder="name" class="input input-bordered" v-model="form.name" />
+                    </div>
+                    <div class="form-control">
+                        <label class="label">
                             <span class="label-text">密码</span>
                         </label>
                         <input type="text" placeholder="password" class="input input-bordered" v-model="form.password" />
@@ -55,6 +61,7 @@ const info = [
 ];
 const form = reactive({
     account: '',
+    name:'',
     password: '',
     status: ''
 })

@@ -1,7 +1,7 @@
 <template>
-    <div class="w-full h-full overflow-hidden">
+    <div class="w-full h-full overflow-hidden flex ">
         <aside class="fixed w-56 h-full">
-            <ul class="menu bg-base-200 p-2 h-full">
+            <ul class="menu bg-base-200 p-2 h-full  rounded-r-lg">
                 <li class="menu-title">
                     <span>经理</span>
                 </li>
@@ -18,7 +18,7 @@
                 <li><a>签到</a></li>
             </ul>
         </aside>
-        <main>
+        <main class='w-full ml-60 mr-4'>
             <router-view />
         </main>
     </div>

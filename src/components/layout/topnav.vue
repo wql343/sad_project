@@ -1,6 +1,6 @@
 
 <template>
-    <div class="navbar bg-base-100 sticky top-0 z-50"
+    <div class="navbar bg-base-100 sticky top-0 z-50 "
         v-if="router.currentRoute.value.path != '/register' && router.currentRoute.value.path != '/login'">
         <div class="flex-none dropdown">
             <button class="btn btn-square btn-ghost">

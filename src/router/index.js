@@ -7,6 +7,7 @@ import StudentEnroll from "../views/student/StudentEnroll.vue";
 import EmployeeView from "../views/employee/EmployeeView.vue";
 import CompanyView from "../views/company/CompanyView.vue";
 import CompanyEnroll from "../views/company/CompanyEnroll.vue";
+import ManageEnroll from "../views/employee/pages/ManageEnroll.vue";
 const routes = [
   {
     path: "/",
@@ -36,7 +37,15 @@ const routes = [
   {
     path:"/employee",
     name: "employee",
-    component:EmployeeView
+    redirect:"/employee/manageenroll",
+    component:EmployeeView,
+    children:[
+      {
+        path:"manageenroll",
+        name: "employee_manageroll",
+        component:ManageEnroll
+      }
+    ]
   },
   {
     path:"/company",

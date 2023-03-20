@@ -1,0 +1,17 @@
+<template>
+    <div>
+        <Table :title="courseprops.title" :head="courseprops.head" :list="courseprops.list"/>
+    </div>
+</template>
+
+<script setup>
+import Table from '../../../components/common/table.vue';
+import { reactive } from 'vue';
+const courseprops = reactive({
+    title: '培训课程总表',
+    head: ['课程名', '课程方向', '讲师', '课程进度'],
+    list: [
+        ['111', 'frontend', 'xxx', '报名中'], ['222', 'backend', 'xxx', '报名结束'], ['333', 'android', 'xxx', '正在上课'], ['444', 'android', 'xxx', '已完成']
+    ]
+})
+</script>

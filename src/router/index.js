@@ -8,6 +8,11 @@ import EmployeeView from "../views/employee/EmployeeView.vue";
 import CompanyView from "../views/company/CompanyView.vue";
 import CompanyEnroll from "../views/company/CompanyEnroll.vue";
 import ManageEnroll from "../views/employee/pages/ManageEnroll.vue";
+import ManageTrain from "../views/employee/pages/ManageTrain.vue";
+import ManageMaterial from "../views/employee/pages/ManageMaterial.vue";
+import ManageCourse from "../views/employee/pages/ManageCourse.vue";
+import ManageTeacher from "../views/employee/pages/ManageTeacher.vue";
+import ManageAttendance from "../views/employee/pages/ManageAttendance.vue";
 const routes = [
   {
     path: "/",
@@ -44,6 +49,31 @@ const routes = [
         path:"manageenroll",
         name: "employee_manageroll",
         component:ManageEnroll
+      },
+      {
+        path:"managetrain",
+        name: "employee_managetrain",
+        component:ManageTrain
+      },
+      {
+        path:"managematerial",
+        name: "employee_managematerial",
+        component:ManageMaterial
+      },
+      {
+        path:"managecourse",
+        name: "employee_managecourse",
+        component:ManageCourse
+      },
+      {
+        path:"manageteacher",
+        name: "employee_manageteacher",
+        component:ManageTeacher
+      },
+      {
+        path:"manageattendance",
+        name: "employee_manageattendance",
+        component:ManageAttendance
       }
     ]
   },

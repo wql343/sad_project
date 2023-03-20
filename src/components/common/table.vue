@@ -19,9 +19,9 @@
                     </thead>
                     <tbody>
                         <!-- row 1 -->
-                        <tr v-for="(main, index) in props.list ">
-                            <th>{{ index+1 }}</th>
-                            <td v-for="item in main">{{ item }}</td>
+                        <tr v-for="(main, index) in props.list " class="hover cursor-pointer">
+                            <th>{{ index + 1 }}</th>
+                            <td v-for="item in main" :innerHTML="item"></td>
                         </tr>
                         <!-- row 2
                         <tr>
@@ -52,5 +52,5 @@ const change = () => {
     isChecked.value = !isChecked.value
     console.log(isChecked.value)
 }
-const props = defineProps(['title','head','list'])
+const props = defineProps(['title', 'head', 'list'])
 </script>

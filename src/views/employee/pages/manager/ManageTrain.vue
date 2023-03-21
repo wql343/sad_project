@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import Table from '../../../components/common/table.vue';
+import Table from '../../../../components/common/table.vue';
 import { reactive } from 'vue';
 const courseprops = reactive({
     title: '培训课程总表',

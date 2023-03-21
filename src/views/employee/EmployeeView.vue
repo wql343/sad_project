@@ -6,18 +6,18 @@ import { ref, reactive, onMounted } from 'vue';
                 <li class="menu-title">
                     <span>经理</span>
                 </li>
-                <li><a :class="isActive[0]" href="/employee/manageenroll" @click="active(0)">管理培训申请</a></li>
-                <li><a :class="isActive[1]" href="/employee/managetrain" @click="active(1)">查看培训情况</a></li>
-                <li><a :class="isActive[2]" href="/employee/managematerial" @click="active(2)">查看办公资料</a></li>
+                <li><a :class="$router.currentRoute.value.path===paths[0]?'active':''" :href="paths[0]">管理培训申请</a></li>
+                <li><a :class="$router.currentRoute.value.path===paths[1]?'active':''" :href="paths[1]">查看培训情况</a></li>
+                <li><a :class="$router.currentRoute.value.path===paths[2]?'active':''" :href="paths[2]">查看办公资料</a></li>
                 <li class="menu-title">
                     <span>执行人</span>
                 </li>
-                <li><a :class="isActive[3]" href="/employee/managecourse" @click="active(3)">管理课程</a></li>
-                <li><a :class="isActive[4]" href="/employee/manageteacher" @click="active(4)">管理讲师</a></li>
+                <li><a :class="$router.currentRoute.value.path===paths[3]?'active':''" :href="paths[3]">管理课程</a></li>
+                <li><a :class="$router.currentRoute.value.path===paths[4]?'active':''" :href="paths[4]">管理讲师</a></li>
                 <li class="menu-title">
                     <span>现场工作人员</span>
                 </li>
-                <li><a :class="isActive[5]" href="/employee/manageattendance" @click="active(5)">签到</a></li>
+                <li><a :class="$router.currentRoute.value.path===paths[5]?'active':''" :href="paths[5]">签到</a></li>
             </ul>
         </aside>
         <main class='w-full ml-60 mr-4'>
@@ -26,23 +26,12 @@ import { ref, reactive, onMounted } from 'vue';
     </div>
 </template>
 <script setup>
-import { ref, reactive,onUpdated,onMounted} from 'vue'
-// import {useActiveStore} from "../../store"
-// import { storeToRefs } from 'pinia'
-// const store = useActiveStore()
-// const {isActive} = storeToRefs(store)
-// const {active} = store
-const isActive = ref([
-    'active', '', '', '', '', ''
-])
-const active = (index) => {
-    for (let i = 0; i < isActive.length; i++) {
-        isActive.value[i] = ''
-    }
-    isActive.value[index] = 'active'
-    console.log(isActive.value)
-}
-onMounted(() => {
-    console.log(isActive.value)
-})
+const paths = [
+    "/employee/manageenroll",
+    "/employee/managetrain",
+    "/employee/managematerial",
+    "/employee/managecourse",
+    "/employee/manageteacher",
+    "/employee/manageattendance"
+]
 </script>

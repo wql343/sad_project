@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import Table from '../../../components/common/table.vue';
+import Table from '../../../../components/common/table.vue';
 import { reactive } from 'vue';
 const teacherprops = reactive({
     title: '讲师资料',

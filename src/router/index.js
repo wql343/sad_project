@@ -7,17 +7,19 @@ import StudentEnroll from "../views/student/StudentEnroll.vue";
 import EmployeeView from "../views/employee/EmployeeView.vue";
 import CompanyView from "../views/company/CompanyView.vue";
 import CompanyEnroll from "../views/company/CompanyEnroll.vue";
-import ManageEnroll from "../views/employee/pages/ManageEnroll.vue";
-import ManageTrain from "../views/employee/pages/ManageTrain.vue";
-import ManageMaterial from "../views/employee/pages/ManageMaterial.vue";
-import ManageCourse from "../views/employee/pages/ManageCourse.vue";
-import ManageTeacher from "../views/employee/pages/ManageTeacher.vue";
-import ManageAttendance from "../views/employee/pages/ManageAttendance.vue";
+import ManageEnroll from "../views/employee/pages/manager/ManageEnroll.vue";
+import ManageTrain from "../views/employee/pages/manager/ManageTrain.vue";
+import ManageMaterial from "../views/employee/pages/manager/ManageMaterial.vue";
+import ManageCourse from "../views/employee/pages/executer/ManageCourse.vue";
+import ManageTeacher from "../views/employee/pages/executer/ManageTeacher.vue";
+import ManageAttendance from "../views/employee/pages/staff/ManageAttendance.vue";
+import AddEnroll from "../views/employee/pages/manager/AddEnroll.vue";
+import AddTeacher from "../views/employee/pages/manager/AddTeacher.vue";
 const routes = [
   {
     path: "/",
     name: "home",
-    redirect:"/login",
+    redirect: "/login",
   },
   {
     path: "/login",
@@ -40,52 +42,62 @@ const routes = [
     component: StudentEnroll,
   },
   {
-    path:"/employee",
+    path: "/employee",
     name: "employee",
-    redirect:"/employee/manageenroll",
-    component:EmployeeView,
-    children:[
+    redirect: "/employee/manageenroll",
+    component: EmployeeView,
+    children: [
       {
-        path:"manageenroll",
+        path: "manageenroll",
         name: "employee_manageroll",
-        component:ManageEnroll
+        component: ManageEnroll,
       },
       {
-        path:"managetrain",
+        path: 'addenroll',
+        name: "add_enroll",
+        component: AddEnroll
+      },
+      {
+        path: 'addteacher',
+        name: "add_teacher",
+        component: AddTeacher
+      },
+      {
+        path: "managetrain",
         name: "employee_managetrain",
-        component:ManageTrain
+        component: ManageTrain
       },
       {
-        path:"managematerial",
+        path: "managematerial",
         name: "employee_managematerial",
-        component:ManageMaterial
+        component: ManageMaterial
       },
       {
-        path:"managecourse",
+        path: "managecourse",
         name: "employee_managecourse",
-        component:ManageCourse
+        component: ManageCourse
       },
       {
-        path:"manageteacher",
+        path: "manageteacher",
         name: "employee_manageteacher",
-        component:ManageTeacher
+        component: ManageTeacher
       },
       {
-        path:"manageattendance",
+        path: "manageattendance",
         name: "employee_manageattendance",
-        component:ManageAttendance
+        component: ManageAttendance
       }
     ]
   },
   {
-    path:"/company",
+    path: "/company",
     name: "company",
-    component:CompanyView
+    component: CompanyView
   },
   {
-    path:"/company/enroll",
-    name:"company_enroll",
-    component:CompanyEnroll
+    path: "/company/enroll",
+    name: "company_enroll",
+    component: CompanyEnroll
   }
 ];
 

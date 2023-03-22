@@ -1,17 +1,29 @@
 <template>
-    <div class="mx-auto card bg-base-200 w-3/5 my-8 overscroll-auto p-16">
+    <div class="mx-auto card bg-base-300 w-3/5 my-8 overscroll-auto p-16">
 
         <div class="form-control">
             <label class="label">
-                <span class="label-text">课程名称</span>
+                <span class="label-text ">课程名称</span>
             </label>
-            <input class="input input-bordered" disabled value="course name" />
+            <input class="input input-bordered bg-base-100" disabled placeholder="You can't touch this" />
+        </div>
+        <div class="form-control">
+            <label class="label">
+                <span class="label-text">课程方向</span>
+            </label>
+            <input class="input input-bordered bg-base-300" disabled placeholder="You can't touch this" />
+        </div>
+        <div class="form-control">
+            <label class="label">
+                <span class="label-text">费用</span>
+            </label>
+            <input class="input input-bordered bg-base-300" disabled placeholder="You can't touch this" />
         </div>
         <div class="form-control">
             <label class="label">
                 <span class="label-text">姓名</span>
             </label>
-            <input type="text" placeholder="name" class="input input-bordered" />
+            <input type="text" placeholder="name" class="input input-bordered " />
         </div>
         <div class="form-control">
             <label class="label">

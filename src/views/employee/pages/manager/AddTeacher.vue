@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-auto card bg-base-200 w-3/5 my-8 overscroll-auto p-16">
+    <div class="mx-auto card bg-base-200 w-3/5 mb-8 overscroll-auto p-16">
         <div class="form-control">
             <label class="label">
                 <span class="label-text">讲师姓名</span>

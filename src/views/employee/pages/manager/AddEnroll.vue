@@ -1,16 +1,19 @@
 <template>
-    <div class="mx-auto card bg-base-200 w-3/5 my-8 overscroll-auto p-16">
+    <div class="mx-auto card bg-base-200 w-3/5 mb-8 overscroll-auto p-16">
         <div class="form-control">
             <label class="label">
                 <span class="label-text">课程名称</span>
             </label>
+
             <input class="input input-bordered" value="course name" />
         </div>
         <div class="form-control">
             <label class="label">
                 <span class="label-text">课程方向</span>
             </label>
-            <input type="text" placeholder="type" class="input input-bordered" />
+               <select class="select select-bordered">
+                <option disabled selected>请选择方向</option>
+            </select>
         </div>
         <div class="form-control">
             <label class="label">

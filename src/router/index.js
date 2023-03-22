@@ -15,6 +15,7 @@ import ManageTeacher from "../views/employee/pages/executer/ManageTeacher.vue";
 import ManageAttendance from "../views/employee/pages/staff/ManageAttendance.vue";
 import AddEnroll from "../views/employee/pages/manager/AddEnroll.vue";
 import AddTeacher from "../views/employee/pages/manager/AddTeacher.vue";
+import TrainDetail from "../views/employee/pages/manager/TrainDetail.vue";
 const routes = [
   {
     path: "/",
@@ -66,6 +67,11 @@ const routes = [
         path: "managetrain",
         name: "employee_managetrain",
         component: ManageTrain
+      },
+      {
+        path: 'traindetail',
+        name: "train_detail",
+        component: TrainDetail
       },
       {
         path: "managematerial",

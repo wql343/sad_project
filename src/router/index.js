@@ -16,6 +16,7 @@ import ManageAttendance from "../views/employee/pages/staff/ManageAttendance.vue
 import AddEnroll from "../views/employee/pages/manager/AddEnroll.vue";
 import AddTeacher from "../views/employee/pages/manager/AddTeacher.vue";
 import TrainDetail from "../views/employee/pages/manager/TrainDetail.vue";
+import PublishCourse from "../views/employee/pages/executer/PublishCourse.vue";
 const routes = [
   {
     path: "/",
@@ -54,57 +55,62 @@ const routes = [
         component: ManageEnroll,
       },
       {
-        path: 'addenroll',
+        path: "addenroll",
         name: "add_enroll",
-        component: AddEnroll
+        component: AddEnroll,
       },
       {
-        path: 'addteacher',
+        path: "addteacher",
         name: "add_teacher",
-        component: AddTeacher
+        component: AddTeacher,
       },
       {
         path: "managetrain",
         name: "employee_managetrain",
-        component: ManageTrain
+        component: ManageTrain,
       },
       {
-        path: 'traindetail',
+        path: "traindetail",
         name: "train_detail",
-        component: TrainDetail
+        component: TrainDetail,
       },
       {
         path: "managematerial",
         name: "employee_managematerial",
-        component: ManageMaterial
+        component: ManageMaterial,
       },
       {
         path: "managecourse",
         name: "employee_managecourse",
-        component: ManageCourse
+        component: ManageCourse,
       },
       {
         path: "manageteacher",
         name: "employee_manageteacher",
-        component: ManageTeacher
+        component: ManageTeacher,
       },
       {
         path: "manageattendance",
         name: "employee_manageattendance",
-        component: ManageAttendance
-      }
-    ]
+        component: ManageAttendance,
+      },
+      {
+        path: "publishcourse",
+        name: "employee_publishcourse",
+        component: PublishCourse,
+      },
+    ],
   },
   {
     path: "/company",
     name: "company",
-    component: CompanyView
+    component: CompanyView,
   },
   {
     path: "/company/enroll",
     name: "company_enroll",
-    component: CompanyEnroll
-  }
+    component: CompanyEnroll,
+  },
 ];
 
 const router = createRouter({
@@ -116,7 +122,7 @@ router.beforeEach((to, from, next) => {
   if (to.path === "/login") return next();
   //获取token
   const tokenStr = window.localStorage.getItem("token");
-  if (!tokenStr) return next('/login');
+  if (!tokenStr) return next("/login");
   next();
 });
 

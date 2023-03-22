@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-auto card bg-base-300 w-3/5 mb-8 overscroll-auto p-16">
+    <div class="mx-auto card bg-base-300 w- mb-8 overscroll-auto p-16">
         <div class="form-control">
             <label class="label">
                 <span class="label-text">课程名称</span>
@@ -48,7 +48,7 @@
             <input disabled class="input input-bordered" value="￥88888" />
         </div>
         <div class="flex w-full mt-6 justify-center">
-            <button class="btn btn-primary w-full">取消</button>
+            <button class="btn btn-primary w-full">返回</button>
         </div>
     </div>
 </template>

@@ -15,3 +15,4 @@ const teacherprops = reactive({
     ]
 })
 </script>
+gi

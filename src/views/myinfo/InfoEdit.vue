@@ -11,9 +11,9 @@
             <label class="label">
                 <span class="label-text">性别</span>
             </label>
-            <select  class="select select-bordered">
+            <select class="select select-bordered">
                 <option selected>男</option>
-                <option >女</option>
+                <option>女</option>
             </select>
         </div>
         <div class="form-control">
@@ -56,7 +56,7 @@
             <button class="btn btn-primary w-2/5" @click="$router.replace('/myinfo')">
                 确认
             </button>
-            <button class="btn  w-2/5">取消</button>
+            <button class="btn  w-2/5" @click="$router.replace('/myinfo')">取消</button>
         </div>
     </div>
 </template>

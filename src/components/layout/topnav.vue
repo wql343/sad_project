@@ -25,7 +25,7 @@
                 </svg>
             </button>
             <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-32">
-                <li><router-link to="/myinfo" replace>个人信息</router-link></li>
+                <li><router-link to="/myinfo" >个人信息</router-link></li>
                 <li><router-link to="/login" replace>退出登录</router-link></li>
             </ul>
         </div>

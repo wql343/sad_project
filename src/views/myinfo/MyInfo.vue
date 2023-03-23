@@ -56,7 +56,7 @@
             <button class="btn btn-primary w-2/5" @click="$router.replace('/myinfo/edit')">
                 编辑
             </button>
-            <button class="btn  w-2/5">取消</button>
+            <button class="btn  w-2/5" @click="$router.back">取消</button>
         </div>
     </div>
 </template>

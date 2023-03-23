@@ -30,7 +30,7 @@
         </div>
         <div class="flex w-full mt-6 justify-between">
             <button class="btn btn-primary w-2/5 " >申请</button>
-            <button class="btn  w-2/5" >取消</button>
+            <button class="btn  w-2/5" @click="$router.replace('/company')" >取消</button>
         </div>
     </div>
 </template>

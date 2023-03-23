@@ -49,7 +49,7 @@
         </div>
         <div class="flex w-full mt-6 justify-between">
             <button class="btn btn-primary w-2/5">添加课程</button>
-            <button class="btn  w-2/5" >取消</button>
+            <button class="btn  w-2/5" @click="$router.replace('/employee/manageenroll') " >取消</button>
         </div>
     </div>
 </template>

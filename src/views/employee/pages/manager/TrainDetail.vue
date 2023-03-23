@@ -47,7 +47,7 @@
             <input disabled class="input input-bordered" value="￥88888" />
         </div>
         <div class="flex w-full mt-6 justify-center">
-            <button class="btn btn-primary w-full">返回</button>
+            <button class="btn btn-primary w-full" @click="$router.replace('/employee/managetrain')">返回</button>
         </div>
     </div>
 </template>

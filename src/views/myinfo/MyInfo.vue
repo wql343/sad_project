@@ -53,7 +53,7 @@
             <input disabled type="text" placeholder="remark" class="input input-bordered" />
         </div>
         <div class="flex w-full mt-6 justify-between">
-            <button class="btn btn-primary w-2/5" @click="$router.push('/myinfo/edit')">
+            <button class="btn btn-primary w-2/5" @click="$router.replace('/myinfo/edit')">
                 编辑
             </button>
             <button class="btn  w-2/5">取消</button>

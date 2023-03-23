@@ -28,8 +28,7 @@
             <label class="label">
                 <span class="label-text">执行人工作进度</span>
             </label>
-            <ul class="steps bg-base-200 rounded-lg py-2">
-                <li class="step step-primary">分配讲师</li>
+            <ul class="steps bg-base-200 rounded-lg pb-2 pt-4">
                 <li class="step step-primary">发布课程</li>
                 <li class="step">完成外部学员报名</li>
                 <li class="step">通知上课</li>
@@ -57,9 +56,9 @@ import Table from '../../../../components/common/table.vue';
 import { reactive } from 'vue';
 const studentprops = reactive({
     title: '学员资料汇总',
-    head: ['申请人', '课程方向', '课程名称', '申请时间'],
+    head: ['姓名', '账号', '联系方式'],
     list: [
-        ['111', '111', '111', '2022'], ['111', '111', '111', '2022'], ['111', '111', '111', '2022'],
+        ['张三', '2344371', '3224177294@qq.com', ],  ['张三', '2344371', '3224177294@qq.com', ],  ['张三', '2344371', '3224177294@qq.com', ],
     ]
 })
 </script>

@@ -17,6 +17,8 @@ import AddEnroll from "../views/employee/pages/manager/AddEnroll.vue";
 import AddTeacher from "../views/employee/pages/manager/AddTeacher.vue";
 import TrainDetail from "../views/employee/pages/manager/TrainDetail.vue";
 import PublishCourse from "../views/employee/pages/executer/PublishCourse.vue";
+import MyInfo from "../views/myinfo/MyInfo.vue";
+import InfoEdit from "../views/myinfo/Infoedit.vue";
 const routes = [
   {
     path: "/",
@@ -32,6 +34,16 @@ const routes = [
     path: "/register",
     name: "register",
     component: RegisterView,
+  },
+  {
+    path: "/myinfo",
+    name: "myinfo",
+    component: MyInfo,
+  },
+  {
+    path: "/myinfo/edit",
+    name: "edit",
+    component: InfoEdit,
   },
   {
     path: "/student",

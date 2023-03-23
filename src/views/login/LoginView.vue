@@ -16,12 +16,6 @@
                     </div>
                     <div class="form-control">
                         <label class="label">
-                            <span class="label-text">名称</span>
-                        </label>
-                        <input type="text" placeholder="name" class="input input-bordered" v-model="form.name" />
-                    </div>
-                    <div class="form-control">
-                        <label class="label">
                             <span class="label-text">密码</span>
                         </label>
                         <input type="text" placeholder="password" class="input input-bordered" v-model="form.password" />
@@ -61,7 +55,6 @@ const info = [
 ];
 const form = reactive({
     account: '',
-    name:'',
     password: '',
     status: ''
 })
@@ -78,9 +71,9 @@ const login = () => {
     localStorage.removeItem('token')
     localStorage.setItem('token', JSON.stringify(form));
     switch (form.status) {
-        case 0: router.push('/student'); break;
-        case 1: router.push('/company'); break;
-        case 2: router.push('/employee'); break;
+        case 0: router.replace('/student'); break;
+        case 1: router.replace('/company'); break;
+        case 2: router.replace('/employee'); break;
     }
 } 
 </script>

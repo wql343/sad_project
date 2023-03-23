@@ -55,5 +55,5 @@ const form = reactive({
     password: '',
     confirmpassword: ''
 })
-const register = () => router.push('/login')
+const register = () => router.replace('/login')
 </script>

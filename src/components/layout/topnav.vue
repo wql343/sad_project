@@ -2,7 +2,7 @@
 <template>
     <div class="navbar bg-base-100 sticky top-0 z-50 "
         v-if="router.currentRoute.value.path != '/register' && router.currentRoute.value.path != '/login'">
-        <div class="flex-none dropdown">
+        <div class="flex-none ">
             <button class="btn btn-square btn-ghost">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     class="inline-block w-5 h-5 stroke-current">
@@ -10,16 +10,12 @@
                     </path>
                 </svg>
             </button>
-            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                <li><a>Item 1</a></li>
-                <li><a>Item 2</a></li>
-            </ul>
         </div>
         <!-- <div class="w-12" v-if="router.currentRoute.value.path!= '/employee' "></div> -->
         <div class="flex-1">
             <a class="btn btn-ghost normal-case text-xl">浩奇</a>
         </div>
-        <div class="flex-none">
+        <div class="flex-none dropdown dropdown-bottom dropdown-end">
             <button class="btn btn-square btn-ghost">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     class="inline-block w-5 h-5 stroke-current">
@@ -28,6 +24,10 @@
                     </path>
                 </svg>
             </button>
+            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-32">
+                <li><a href="/myinfo">个人信息</a></li>
+                <li><a href="/login">退出登录</a></li>
+            </ul>
         </div>
     </div>
 </template>

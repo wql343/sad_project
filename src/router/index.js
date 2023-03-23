@@ -18,7 +18,7 @@ import AddTeacher from "../views/employee/pages/manager/AddTeacher.vue";
 import TrainDetail from "../views/employee/pages/manager/TrainDetail.vue";
 import PublishCourse from "../views/employee/pages/executer/PublishCourse.vue";
 import MyInfo from "../views/myinfo/MyInfo.vue";
-import InfoEdit from "../views/myinfo/Infoedit.vue";
+import InfoEdit from "../views/myinfo/InfoEdit.vue";
 const routes = [
   {
     path: "/",

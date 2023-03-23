@@ -34,7 +34,7 @@ import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import Table from '../../components/common/table.vue';
 const router = useRouter();
-const add = () => router.push('/company/enroll')
+const add = () => router.replace('/company/enroll')
 const props = reactive({
     title: '已申请培训',
     head: ['课程类别','课程名称','申请时间','状态'],

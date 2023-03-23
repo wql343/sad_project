@@ -23,8 +23,8 @@ const info = [
 const go = (status, path) => {
   statusStore.choose(status)
   if (localStorage.getItem('token') == status) {
-    router.push(path);
+    router.replace(path);
   }
-  else router.push('/login');
+  else router.replace('/login');
 }
 </script>

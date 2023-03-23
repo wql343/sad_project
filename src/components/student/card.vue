@@ -12,5 +12,5 @@
 <script setup>
 import { useRouter } from 'vue-router';
 const router = useRouter();
-const toEnroll = () => router.push("/student/enroll");
+const toEnroll = () => router.replace("/student/enroll");
 </script>

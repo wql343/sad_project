@@ -57,7 +57,7 @@ const change = () => {
 const props = defineProps(['title', 'head', 'list', 'path'])
 const go = () => {
     if (props.path)
-    router.push(props.path)
+    router.replace(props.path)
     console.log(props.path)
 }
 </script>

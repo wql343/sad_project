@@ -1,16 +1,27 @@
 <template >
-    <div class="card card-compact w-72 bg-base-100 shadow-xl m-2" @click="toEnroll">
-        <figure><img src="http://yun.itheima.com/Upload/Images/20211231/61ce744050fc1.jpg" /></figure>
+    <div class="card card-compact w-64 shadow-xl m-2 bg-accent" @click="toEnroll($event)" :id="props.id">
+        <!-- <figure><img src="http://yun.itheima.com/Upload/Images/20211231/61ce744050fc1.jpg" /></figure> -->
+        <!-- <figure><img src=“http://yun.itheima.com/Upload/Images/20230106/63b77a0ed1fb7.jpg”></figure> -->
         <div class="card-body">
             <div class="card-title text-base justify-around">
-                <div>前端web入门</div>
-                <div>2022年3月3日</div>
+                <div class="w-1/2">{{props.name}}</div>
+                <div class="w-1/2">{{props.time}}</div>
             </div>
         </div>
     </div>
 </template>
 <script setup>
 import { useRouter } from 'vue-router';
+import { useIdStore } from "../../store";
+import { storeToRefs } from "pinia";
+const idStore = useIdStore()
+const { id } = storeToRefs(idStore)
+const { setId } = idStore
 const router = useRouter();
-const toEnroll = () => router.replace("/student/enroll");
+const toEnroll = (e) => {
+    setId(e.currentTarget.id)
+    router.replace("/student/enroll");
+}
+
+const props = defineProps(['name', 'time','id'])
 </script>

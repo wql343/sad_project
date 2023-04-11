@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Table :title="teacherprops.title" :head="teacherprops.head" :list="teacherprops.list" />
+        <Table :title="teacherprops.title" :head="teacherprops.head" :list="teacherprops.list" :idlist="teacherprops.idlist"/>
     </div>
 </template>
 
@@ -12,7 +12,8 @@ const teacherprops = reactive({
     head: ['姓名', '联系方式', '讲授方向', '讲课次数'],
     list: [
         ['111', '12345678900', '111', '111',], ['111', '12345678900', '111', '111',], ['111', '12345678900', '111', '111',],
-    ]
+    ],
+    idlist: [0,0,0]
 })
 </script>
 gi

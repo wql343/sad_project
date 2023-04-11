@@ -33,7 +33,7 @@
                         <input type="text" placeholder="confirm password" class="input input-bordered"
                             v-model="form.confirmpassword" />
                         <label class="label">
-                            <router-link to="/login" class="label-text-alt link link-hover">back</router-link>
+                            <router-link to="/login" class="label-text-alt link link-hover" replace>back</router-link>
                         </label>
                     </div>
                     <div class="form-control mt-6">
@@ -46,14 +46,34 @@
 </template>
 
 <script setup>
+import axios from "axios"
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 const form = reactive({
     account: '',
-    name:'',
+    name: '',
     password: '',
     confirmpassword: ''
 })
-const register = () => router.replace('/login')
+const register = () => {
+    axios({
+        url: "http://kjum.top:8083/doregist",
+        method: "post",
+        data: {
+            account: form.account,
+            name: form.name,
+            password: form.password
+        },
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }).then((response) => {
+        console.log(response)
+        router.replace('/login')
+    }).catch((error) => {
+        console.log(error)
+    })
+}
+
 </script>

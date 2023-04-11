@@ -19,7 +19,8 @@
                     </thead>
                     <tbody>
                         <!-- row 1 -->
-                        <tr v-for="(main, index) in props.list " class="hover cursor-pointer" @click="go">
+                        <tr v-for="(main, index) in props.list" class="hover cursor-pointer" @click="go($event)"
+                            :id="props.idlist[index]">
                             <th>{{ index + 1 }}</th>
                             <td v-for="item in main" :innerHTML="item"></td>
                         </tr>
@@ -48,16 +49,24 @@
 <script setup>
 import { ref, defineProps } from "vue"
 import { useRouter } from "vue-router";
+import { useIdStore } from "../../store";
+import { storeToRefs } from "pinia";
+
+const idStore = useIdStore()
+const { id } = storeToRefs(idStore)
+const { setId } = idStore
 const router = useRouter()
 const isChecked = ref(true)
 const change = () => {
     isChecked.value = !isChecked.value
     console.log(isChecked.value)
 }
-const props = defineProps(['title', 'head', 'list', 'path'])
-const go = () => {
+const props = defineProps(['title', 'head', 'list', 'path', 'idlist'])
+const go = (e) => {
     if (props.path)
-    router.replace(props.path)
-    console.log(props.path)
+        router.replace(props.path)
+    console.log(e.currentTarget.id)
+    setId(e.currentTarget.id)
+    console.log(id.value)
 }
 </script>

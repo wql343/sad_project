@@ -1,6 +1,6 @@
 <template>
     <div class="mx-auto w-4/5 my-4 overscroll-auto">
-        <Table :title="props.title" :head="props.head" :list="props.list"/>
+        <Table :title="props.title" :head="props.head" :list="props.list" :idlist="props.idlist"/>
         <div class="flex justify-between">
             <div class="text-xl font-black ml-4 mt-8 mb-4">
                 发起新申请
@@ -30,14 +30,44 @@
     </div>
 </template>
 <script setup>
-import { ref, reactive } from 'vue';
+import axios from 'axios';
+import { ref, reactive, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import Table from '../../components/common/table.vue';
 const router = useRouter();
-const add = () => router.replace('/company/enroll')
+const add = () => {
+    router.replace('/company/enroll')
+}
+onMounted(()=>{
+    axios({
+        url: "http://kjum.top:8083/work/getMyApplicationForCompany",
+        method: "get",
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            authToken: sessionStorage.getItem('token')
+        },
+
+    }).then((response) => {
+        console.log(response)
+        for(let i in response.data.data)
+        {   switch(response.data.data[i].state)
+            {
+                case 0:response.data.data[i].state = "待审批" 
+                break;
+                case 1:response.data.data[i].state = "通过"
+                break;
+            }
+            props.list.push([ response.data.data[i].field,response.data.data[i].courseName,response.data.data[i].applyDate,response.data.data[i].state])
+            props.idlist.push(response.data.data[i].id)
+        }
+    }).catch((error) => {
+        console.log(error)
+    })
+})
 const props = reactive({
     title: '已申请培训',
-    head: ['课程类别','课程名称','申请时间','状态'],
-    list:[['前端','js','2022','成功'],['前端','js','2022','成功'],['前端','js','2022','通过，待缴费']]
+    head: ['课程类别', '课程名称', '申请时间', '状态'],
+    list: [],
+    idlist:[]
 })
 </script>

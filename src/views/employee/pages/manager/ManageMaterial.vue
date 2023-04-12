@@ -20,13 +20,30 @@ const teacherprops = reactive({
 })
 const studentprops = reactive({
     title: '学员资料',
-    head: ['姓名', '联系方式', '所属公司', '上课次数'],
+    head: ['账号','姓名', '邮箱', '上课次数'],
     list: [
-        [],
+        
     ],
     idlist: []
 })
 onMounted(() => {
+    axios({
+        url: "http://kjum.top:8083/work/getAllStudents",
+        method: "get",
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            authToken: sessionStorage.getItem('token')
+        },
+
+    }).then((response) => {
+        console.log(response)
+        for (let i in response.data.data) {
+            studentprops.list.push([response.data.data[i].account,response.data.data[i].name,  response.data.data[i].email, response.data.data[i].courseNum])
+            studentprops.idlist.push(0)
+        }
+    }).catch((error) => {
+        console.log(error)
+    })
     axios({
         url: "http://kjum.top:8083/work/getAllTeachers",
         method: "get",

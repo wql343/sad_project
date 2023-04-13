@@ -26,7 +26,7 @@
             </button>
             <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-32">
                 <li><router-link to="/myinfo" >个人信息</router-link></li>
-                <li><router-link to="/login" replace>退出登录</router-link></li>
+                <li @click="Toast('info', '成功退出登录')"><router-link to="/login" replace>退出登录</router-link></li>
             </ul>
         </div>
     </div>
@@ -35,6 +35,7 @@
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import { watch, onMounted } from 'vue';
+import { Toast } from '../common/toast';
 const router = useRouter();
 watch(() => router.currentRoute.value.path, (newValue, oldValue) => {
     console.log('watch', newValue);

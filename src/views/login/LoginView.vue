@@ -28,8 +28,8 @@
                             <option v-for="(item, status) in info" :key="status" :value="status">{{ item.name }}</option>
                         </select>
                         <label class="label">
-                            <router-link to="/register" class="label-text-alt link link-hover"
-                                v-if="form.status == 0" replace>还未注册？</router-link>
+                            <router-link to="/register" class="label-text-alt link link-hover" v-if="form.status == 0"
+                                replace>还未注册？</router-link>
                         </label>
                     </div>
 
@@ -39,6 +39,11 @@
                 </div>
             </div>
         </div>
+        <div v-if="false">
+            <div class="alert-warning" />
+            <div class="alert-success" />
+            <div class="alert-info" />
+        </div>
     </div>
 </template>
 <script setup>
@@ -47,6 +52,7 @@ import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 // import { useStatusStore } from '../../store/index.js';
 import { storeToRefs } from 'pinia';
+import { Toast } from "../../components/common/toast";
 const router = useRouter();
 // const statusStore = useStatusStore();
 // const status = storeToRefs(statusStore).status.value;
@@ -73,27 +79,32 @@ const login = () => {
         }
     }).then((response) => {
         console.log(response)
-        switch (form.status) {
-            case 0: {
-                if (response.data.data.role == 1) {
-                    router.replace('/student');
-                }
-            };
-            break;
-            case 1: {
-                if (response.data.data.forCompany) {
-                    router.replace('/company');
-                }
-            };
-                break;
-            case 2: {
-                if (response.data.data.manager || response.data.data.operater || response.data.data.presenter) {
-                    router.replace('/employee');
-                }
-            };
-                break;
+        if (response.data.data !== null) {
+            switch (form.status) {
+                case 0: {
+                    if (response.data.data.role == 1) {
+                        router.replace('/student');
+                    }
+                };
+                    break;
+                case 1: {
+                    if (response.data.data.forCompany) {
+                        router.replace('/company');
+                    }
+                };
+                    break;
+                case 2: {
+                    if (response.data.data.manager || response.data.data.operater || response.data.data.presenter) {
+                        router.replace('/employee');
+                    }
+                };
+                    break;
+            }
+            sessionStorage.setItem('token', response.data.data.authToken)
+            Toast('success', "登录成功")
+        } else {
+            Toast('error', response.data.msg)
         }
-        sessionStorage.setItem('token', response.data.data.authToken)
     }).catch((error) => {
         console.log(error)
     })

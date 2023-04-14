@@ -9,6 +9,7 @@
 import Table from '../../../../components/common/table.vue';
 import { useIdStore } from '../../../../store';
 import { reactive, onMounted } from 'vue';
+import { Toast } from '../../../../components/common/toast';
 import axios from 'axios';
 const idStore = useIdStore()
 const {setInfo1,setInfo2}=idStore
@@ -48,6 +49,7 @@ onMounted(() => {
 
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
     axios({
         url: "http://kjum.top:8083/work/getAllApplicationDone",
@@ -66,6 +68,7 @@ onMounted(() => {
         }
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 })
 </script>

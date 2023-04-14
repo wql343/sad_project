@@ -106,6 +106,7 @@ const go = (e) => {
         nextTick()
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 }
 onMounted(() => {
@@ -130,6 +131,7 @@ onMounted(() => {
         }
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 })
 </script>

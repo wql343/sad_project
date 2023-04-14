@@ -79,6 +79,7 @@ const register = () => {
                 router.replace('/login')
             }).catch((error) => {
                 console.log(error)
+                Toast('error', error)
             })
         } else Toast('error', '密码不一致')
     } else Toast('warning', '必填项不完整')

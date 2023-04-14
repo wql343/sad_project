@@ -94,10 +94,11 @@ const confirm = () => {
             console.log(response)
             if (response.data.code === 10000) {
                     Toast('success', '成功发起申请')
-                } else Toast('error', response.data.msg)
+            } else Toast('error', response.data.msg)
             router.replace('/company')
         }).catch((error)=>{
             console.log(error)
+            Toast('error', error)
         })
     } else Toast('warning', '必填项不完整') 
 }

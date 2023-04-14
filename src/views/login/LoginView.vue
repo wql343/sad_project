@@ -111,6 +111,7 @@ const login = () => {
         }
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 } 
 </script>

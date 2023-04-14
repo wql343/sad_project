@@ -64,6 +64,7 @@
 import axios from "axios"
 import { onMounted, reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import { Toast } from "../../components/common/toast";
 const router = useRouter()
 const form = reactive({
     name: '',
@@ -89,9 +90,13 @@ const confirm = () => {
 
     }).then((response) => {
         console.log(response.data)
+        if (response.data.code === 10000) {
+            Toast('success', '更新个人信息成功')
+        } else Toast('error', response.data.msg)
         router.replace('/myinfo')
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 }
 onMounted(() => {
@@ -119,6 +124,7 @@ onMounted(() => {
 
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 })
 </script>

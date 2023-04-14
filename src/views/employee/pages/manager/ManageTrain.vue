@@ -8,6 +8,7 @@
 import axios from 'axios';
 import Table from '../../../../components/common/table.vue';
 import { reactive, onMounted } from 'vue';
+import { Toast } from '../../../../components/common/toast';
 const courseprops = reactive({
     title: '培训课程总表',
     head: ['课程名', '课程方向', '讲师', '课程进度'],
@@ -42,6 +43,7 @@ onMounted(()=>{
         }
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
 })
 axios({
         url: "http://kjum.top:8083/work/getAllTeachers",
@@ -59,10 +61,10 @@ axios({
             }
 
         }
-        console.log(alreadyprops.list)
     })
         .catch((error) => {
             console.log(error)
+            Toast('error', error)
         })
 })
 </script>

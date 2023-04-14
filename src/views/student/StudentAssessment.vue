@@ -65,6 +65,7 @@ const confirm =()=>{
         router.replace("/student")
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 }
 </script>

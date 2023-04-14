@@ -39,6 +39,7 @@ import * as XLSX from 'xlsx';
 import axios from 'axios';
 import Table from '../../../../components/common/table.vue';
 import { reactive, onMounted } from 'vue';
+import { Toast } from '../../../../components/common/toast';
 const teacherprops = reactive({
     title: '讲师资料',
     head: ['姓名', '联系方式', '讲授方向', '讲课次数'],
@@ -116,9 +117,11 @@ const confirm = () => {
             }
         }).catch((error) => {
             console.log(error)
+            Toast('error', error)
         })
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 }
 
@@ -140,6 +143,7 @@ onMounted(() => {
         }
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
     axios({
         url: "http://kjum.top:8083/work/getAllTeachers",
@@ -157,6 +161,7 @@ onMounted(() => {
         }
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 })
 </script>

@@ -34,6 +34,7 @@ import { reactive } from 'vue';
 import { useRouter } from "vue-router";
 import { useIdStore } from "../../store";
 import { storeToRefs } from "pinia";
+import { Toast } from '../../components/common/toast';
 
 const idStore = useIdStore()
 const { id } = storeToRefs(idStore)
@@ -58,7 +59,10 @@ const confirm =()=>{
         }
     }).then((response) => {
         console.log(response)
-        router.replace("")
+        if (response.data.code === 10000) {
+            Toast('success', '评价提交成功')
+        } else Toast('error', response.data.msg)
+        router.replace("/student")
     }).catch((error) => {
         console.log(error)
     })

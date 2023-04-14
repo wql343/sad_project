@@ -59,6 +59,7 @@ import { useRouter } from 'vue-router';
 import axios from 'axios';
 import { useIdStore } from "../../store";
 import { storeToRefs } from "pinia";
+import { Toast } from "../../components/common/toast";
 const router = useRouter()
 const idStore = useIdStore()
 const { id } = storeToRefs(idStore)
@@ -96,7 +97,7 @@ onMounted(() => {
     })
 })
 const confirm = () => {
-    if (myform.email && myform.name)
+    if (myform.email && myform.name) {
         axios({
             url: "http://kjum.top:8083/student/chooseNewCourse",
             method: "post",
@@ -111,9 +112,13 @@ const confirm = () => {
             }
         }).then((response) => {
             console.log(response)
+            if (response.data.code === 10000) {
+                Toast('success', '选课成功')
+            } else Toast('error', response.data.msg)
             router.replace('/student')
         }).catch((error) => {
             console.log(error)
         })
+    } else Toast('warning', '必填项不完整')
 }
 </script>

@@ -24,13 +24,13 @@
                         <label class="label">
                             <span class="label-text">密码</span>
                         </label>
-                        <input type="text" placeholder="password" class="input input-bordered" v-model="form.password" />
+                        <input type="password" placeholder="password" class="input input-bordered" v-model="form.password" />
                     </div>
                     <div class="form-control">
                         <label class="label">
                             <span class="label-text">确认密码</span>
                         </label>
-                        <input type="text" placeholder="confirm password" class="input input-bordered"
+                        <input type="password" placeholder="confirm password" class="input input-bordered"
                             v-model="form.confirmpassword" />
                         <label class="label">
                             <router-link to="/login" class="label-text-alt link link-hover" replace>back</router-link>
@@ -49,6 +49,7 @@
 import axios from "axios"
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import { Toast } from "../../components/common/toast";
 const router = useRouter();
 const form = reactive({
     account: '',
@@ -57,23 +58,28 @@ const form = reactive({
     confirmpassword: ''
 })
 const register = () => {
-    axios({
-        url: "http://kjum.top:8083/doregist",
-        method: "post",
-        data: {
-            account: form.account,
-            name: form.name,
-            password: form.password
-        },
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-    }).then((response) => {
-        console.log(response)
-        router.replace('/login')
-    }).catch((error) => {
-        console.log(error)
-    })
+    if (form.account && form.name && form.password && form.confirmpassword) {
+        axios({
+            url: "http://kjum.top:8083/doregist",
+            method: "post",
+            data: {
+                account: form.account,
+                name: form.name,
+                password: form.password
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then((response) => {
+            console.log(response)
+            if (response.data.code === 10000) {
+                Toast('success', '注册成功')
+            } else Toast('warning', response.data.msg)
+            router.replace('/login')
+        }).catch((error) => {
+            console.log(error)
+        })
+    } else Toast('warning', '必填项不完整')
 }
 
 </script>

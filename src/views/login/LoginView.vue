@@ -43,6 +43,7 @@
             <div class="alert-warning" />
             <div class="alert-success" />
             <div class="alert-info" />
+            <svg class="stroke-current flex-shrink-0 w-6 h-6" />
         </div>
     </div>
 </template>
@@ -67,6 +68,9 @@ const form = reactive({
     status: -1
 })
 const login = () => {
+    if (form.status === -1) {
+        Toast('warning', '请选择身份')
+    } else
     axios({
         url: "http://kjum.top:8083/dologin",
         method: 'post',

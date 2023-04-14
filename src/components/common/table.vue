@@ -51,7 +51,6 @@ import { ref, defineProps } from "vue"
 import { useRouter } from "vue-router";
 import { useIdStore } from "../../store";
 import { storeToRefs } from "pinia";
-
 const idStore = useIdStore()
 const { id } = storeToRefs(idStore)
 const { setId } = idStore
@@ -63,10 +62,20 @@ const change = () => {
 }
 const props = defineProps(['title', 'head', 'list', 'path', 'idlist'])
 const go = (e) => {
-    if (props.path)
-        router.replace(props.path)
     console.log(e.currentTarget.id)
     setId(e.currentTarget.id)
     console.log(id.value)
-}
+
+    if (props.path === "assess") {
+        for (let i in props.idlist) {
+            if (props.idlist[i] == id.value && props.list[i][3] == "已结束") {
+                router.replace('/student/assess')
+            }
+        }
+    }
+
+    else if (props.path && props.path !== "assess") {
+        router.replace(props.path)
+    }
+    }
 </script>

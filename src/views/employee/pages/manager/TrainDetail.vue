@@ -53,6 +53,13 @@
             </label>
             <input disabled class="input input-bordered" v-model="form.monney" />
         </div>
+        <div class="form-control">
+            <label class="label">
+                <span class="label-text">调查信息</span>
+            </label>
+            <Table :title="assessprops.title" :head="assessprops.head" :list="assessprops.list"
+                :idlist="assessprops.idlist" />
+        </div>
         <div class="flex w-full mt-6 justify-center">
             <button class="btn btn-primary w-full" @click="$router.replace('/employee/managetrain')">返回</button>
         </div>
@@ -74,11 +81,21 @@ const form = reactive({
     teacherId: -1,
     executer: -1,
     state: "",
-    monney: ""
+    monney: "",
+    rate:0,
+    assess:""
 })
 const studentprops = reactive({
     title: '学员资料汇总',
     head: ['姓名', '账号', '联系方式'],
+    list: [
+
+    ],
+    idlist: []
+})
+const assessprops = reactive({
+    title: '调查表汇总',
+    head: ['姓名', '邮箱', '评分','评价'],
     list: [
 
     ],
@@ -163,6 +180,22 @@ onMounted(() => {
     }).then((response) => {
         console.log(response)
         form.monney = response.data.data + "元"
+    }).catch((error) => {
+        console.log(error)
+    })
+    axios({
+        url: "http://kjum.top:8083/work/getCourseInvestigation?courseId=" + id.value,
+        method: "get",
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            authToken: sessionStorage.getItem('token')
+        },
+    }).then((response) => {
+        console.log(response)
+        for (let i in response.data.data) {
+            assessprops.list.push([response.data.data[i].name,  response.data.data[i].email,response.data.data[i].score,response.data.data[i].idea])
+            assessprops.idlist.push(response.data.data[i].id)
+        }
     }).catch((error) => {
         console.log(error)
     })

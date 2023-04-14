@@ -1,4 +1,3 @@
-import { onMounted, reactive } from 'vue';
 <template>
     <div class="mx-auto card bg-base-300 w-3/5 my-8 overscroll-auto p-16">
 

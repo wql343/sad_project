@@ -43,6 +43,7 @@ import axios from 'axios';
 import * as XLSX from 'xlsx';
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import { Toast } from '../../components/common/toast';
 const form = reactive({
     field: '-1',
     courseName: '',
@@ -80,20 +81,25 @@ const getStuinfo = (e) => {
 const router = useRouter()
 const confirm = () => {
     console.log(form)
-    axios({
-            url: "http://kjum.top:8083/work/addApplicationForCompany",
-            method:'post',
-            data:form,
-            headers: {
-            'Content-Type': 'application/json',
-            authToken: sessionStorage.getItem('token')
-        }
-    }).then((response)=>{
-        console.log(response)
-       router.replace('/company')
-    }).catch((error)=>{
-        console.log(error)
-    })
+    if (form.courseName && form.field && form.remark) {
+        axios({
+                url: "http://kjum.top:8083/work/addApplicationForCompany",
+                method:'post',
+                data:form,
+                headers: {
+                'Content-Type': 'application/json',
+                authToken: sessionStorage.getItem('token')
+            }
+        }).then((response)=>{
+            console.log(response)
+            if (response.data.code === 10000) {
+                    Toast('success', '成功发起申请')
+                } else Toast('error', response.data.msg)
+            router.replace('/company')
+        }).catch((error)=>{
+            console.log(error)
+        })
+    } else Toast('warning', '必填项不完整') 
 }
 
 </script>

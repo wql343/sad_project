@@ -59,26 +59,28 @@ const form = reactive({
 })
 const register = () => {
     if (form.account && form.name && form.password && form.confirmpassword) {
-        axios({
-            url: "http://kjum.top:8083/doregist",
-            method: "post",
-            data: {
-                account: form.account,
-                name: form.name,
-                password: form.password
-            },
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).then((response) => {
-            console.log(response)
-            if (response.data.code === 10000) {
-                Toast('success', '注册成功')
-            } else Toast('warning', response.data.msg)
-            router.replace('/login')
-        }).catch((error) => {
-            console.log(error)
-        })
+        if (form.password === form.confirmpassword) {
+            axios({
+                url: "http://kjum.top:8083/doregist",
+                method: "post",
+                data: {
+                    account: form.account,
+                    name: form.name,
+                    password: form.password
+                },
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then((response) => {
+                console.log(response)
+                if (response.data.code === 10000) {
+                    Toast('success', '注册成功')
+                } else Toast('error', response.data.msg)
+                router.replace('/login')
+            }).catch((error) => {
+                console.log(error)
+            })
+        } else Toast('error', '密码不一致')
     } else Toast('warning', '必填项不完整')
 }
 

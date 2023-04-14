@@ -114,7 +114,7 @@ const confirm = () => {
             console.log(response)
             if (response.data.code === 10000) {
                 Toast('success', '选课成功')
-            } else Toast('warning', response.data.msg)
+            } else Toast('error', response.data.msg)
             router.replace('/student')
         }).catch((error) => {
             console.log(error)

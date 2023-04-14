@@ -93,6 +93,9 @@ const go = (e) => {
 
     }).then((response) => {
         console.log(response)
+        if (response.data.code === 10000) {
+            Toast('success', '签到成功')
+        } else Toast('error', response.data.msg)
         for (let i in table.idlist) {
             if (table.idlist[i] == current.id) {
                 table.list[i][3] = "已签到"
@@ -116,9 +119,6 @@ onMounted(() => {
 
     }).then((response) => {
         console.log(response)
-        if (response.data.code === 10000) {
-            Toast('success', '签到成功')
-        } else Toast('error', response.data.msg)
         for (let i in response.data.data) {
             if (response.data.data[i].assigned)
                 response.data.data[i].assigned = "已签到"

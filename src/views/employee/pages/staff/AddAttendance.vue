@@ -14,20 +14,19 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th v-for="item in table.data.head">{{ item }}</th>
+                            <th v-for="item in table.head">{{ item }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- row 1 -->
-                        <tr v-for="(main, index) in table.data.list" class="hover cursor-pointer"
-                            :id="table.data.idlist[index]">
+                        <tr v-for="(main, index) in table.list" class="hover cursor-pointer" :id="table.idlist[index]">
                             <th>{{ index + 1 }}</th>
                             <td v-for="item in main">
                                 <div>{{ item }}</div>
 
                             </td>
                             <td>
-                                <button v-if="main[3] == '待签到'" :id="table.data.idlist[index]" class="btn btn-accent"
+                                <button v-if="main[3] == '待签到'" :id="table.idlist[index]" class="btn btn-accent"
                                     @click="go($event)">签到</button>
                             </td>
                         </tr>
@@ -71,11 +70,11 @@ const change = () => {
     console.log(isChecked.value)
 }
 const table = reactive({
-    data: {
-        head: ["账号", "姓名", "邮箱", "状态", ""],
-        list: [],
-        idlist: [],
-    }
+
+    head: ["账号", "姓名", "邮箱", "状态", ""],
+    list: [],
+    idlist: [],
+
 
 })
 const go = (e) => {
@@ -93,17 +92,14 @@ const go = (e) => {
 
     }).then((response) => {
         console.log(response)
-        nextTick(() => {
-            for (let i in table.data.idlist) {
-                if (table.data.idlist[i] == current.id)
-                    {
-                        table.data.list[i].assigned = "已签到"
-                        break
-                    } 
+        for (let i in table.idlist) {
+            if (table.idlist[i] == current.id) {
+                table.list[i][3] = "已签到"
+                break
             }
-        })
-        
-
+        }
+        console.log(table.list)
+        nextTick()
     }).catch((error) => {
         console.log(error)
     })
@@ -124,8 +120,8 @@ onMounted(() => {
                 response.data.data[i].assigned = "已签到"
             else response.data.data[i].assigned = "待签到"
 
-            table.data.list.push([response.data.data[i].username, response.data.data[i].name, response.data.data[i].email, response.data.data[i].assigned])
-            table.data.idlist.push(response.data.data[i].assignId)
+            table.list.push([response.data.data[i].username, response.data.data[i].name, response.data.data[i].email, response.data.data[i].assigned])
+            table.idlist.push(response.data.data[i].assignId)
             console.log(table)
         }
     }).catch((error) => {

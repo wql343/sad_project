@@ -68,7 +68,7 @@ onMounted(() => {
     }).then((response) => {
         console.log(response)
         for (let i in response.data.data) {
-            alreadyprops.list.push([response.data.data[i].field, response.data.data[i].courseName, response.data.data[i].teacherId])
+            alreadyprops.list.push([response.data.data[i].courseName, response.data.data[i].field, response.data.data[i].teacherId])
             alreadyprops.idlist.push(response.data.data[i].id)
 
         }

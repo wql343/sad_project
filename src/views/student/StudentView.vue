@@ -52,7 +52,7 @@
             </div>
         </div> -->
         <Table :title="studentprops.title" :head="studentprops.head" :list="studentprops.list"
-            :idlist="studentprops.idlist"></Table>
+            :idlist="studentprops.idlist" :path="studentprops.path"></Table>
         <!-- 分割线 -->
         <div class="text-xl font-black ml-4 mt-8 mb-4">
             可报名课程
@@ -74,7 +74,9 @@ const studentprops = reactive({
     list: [
 
     ],
-    idlist: []
+    idlist: [],
+    path:"assess"
+
 })
 const webprops = reactive({
     title: 'web前端',
@@ -104,7 +106,7 @@ onMounted(() => {
     }).then((response) => {
         console.log(response)
         for (let i of response.data.data) {
-            if (i.situation)
+            if (!i.situation)
                 i.situation = "已结束"
             else
                 i.situation = "待开始"

@@ -20,6 +20,7 @@ import PublishCourse from "../views/employee/pages/executer/PublishCourse.vue";
 import MyInfo from "../views/myinfo/MyInfo.vue";
 import InfoEdit from "../views/myinfo/InfoEdit.vue";
 import AddAtendance from "../views/employee/pages/staff/AddAttendance.vue"
+import StudentAssessment from "../views/student/StudentAssessment.vue"
 const routes = [
   {
     path: "/",
@@ -55,6 +56,11 @@ const routes = [
     path: "/student/enroll",
     name: "student_enroll",
     component: StudentEnroll,
+  },
+  {
+    path:"/student/assess",
+    name:"student_assess",
+    component:StudentAssessment
   },
   {
     path: "/employee",

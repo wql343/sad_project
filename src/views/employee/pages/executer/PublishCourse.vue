@@ -14,7 +14,7 @@
                <select class="select select-bordered" v-model="form.field">
                 <option disabled selected>请选择方向</option>
                 <option value="web前端开发">web前端</option>
-                <option value="后端开发">后端</option>
+                <option value="后端">后端</option>
                 <option value="App开发">App开发</option>
                 <option value="小程序开发">小程序开发</option>
             </select>

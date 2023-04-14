@@ -11,6 +11,7 @@
 import Table from '../../../../components/common/table.vue';
 import axios, { formToJSON } from 'axios';
 import { reactive, onMounted } from 'vue';
+import { Toast } from '../../../../components/common/toast';
 // const courseprops = reactive({
 //     title: '我执行的课程',
 //     head: ['课程名', '课程方向', '讲师', '课程状态'],
@@ -56,6 +57,7 @@ onMounted(() => {
 
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
     axios({
         url: "http://kjum.top:8083/work/getAllCourseDone",
@@ -74,6 +76,7 @@ onMounted(() => {
         }
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
     axios({
         url: "http://kjum.top:8083/work/getAllTeachers",
@@ -95,6 +98,7 @@ onMounted(() => {
     })
         .catch((error) => {
             console.log(error)
+            Toast('error', error)
         })
 })
 </script>

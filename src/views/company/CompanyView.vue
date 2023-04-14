@@ -34,6 +34,7 @@ import axios from 'axios';
 import { ref, reactive, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import Table from '../../components/common/table.vue';
+import { Toast } from '../../components/common/toast';
 const router = useRouter();
 const add = () => {
     router.replace('/company/enroll')
@@ -62,6 +63,7 @@ onMounted(()=>{
         }
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 })
 const props = reactive({

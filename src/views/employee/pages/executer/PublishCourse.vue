@@ -13,7 +13,7 @@
             </label>
                <select class="select select-bordered" v-model="form.field">
                 <option disabled selected>请选择方向</option>
-                <option value="web前端开发">web前端</option>
+                <option value="web前端">web前端</option>
                 <option value="后端">后端</option>
                 <option value="App开发">App开发</option>
                 <option value="小程序开发">小程序开发</option>
@@ -58,6 +58,7 @@ import { useIdStore } from '../../../../store';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
 import { reactive, onMounted } from 'vue';
+import { Toast } from '../../../../components/common/toast';
 const idStore = useIdStore()
 const {id}=storeToRefs(idStore)
 const router = useRouter()
@@ -91,6 +92,7 @@ onMounted(()=>{
 
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
     axios({
         url: "http://kjum.top:8083/work/getAllTeachers",
@@ -106,6 +108,7 @@ onMounted(()=>{
     })
         .catch((error) => {
             console.log(error)
+            Toast('error', error)
         })
 })
 const confirm =()=>{
@@ -126,9 +129,13 @@ const confirm =()=>{
 
     }).then((response) => {
         console.log(response)
+        if (response.data.code === 10000) {
+            Toast('success', '成功发布课程')
+        } else Toast('error', response.data.msg)
         router.replace('/employee/managecourse')
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 }
 

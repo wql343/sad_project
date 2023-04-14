@@ -94,6 +94,7 @@ onMounted(() => {
         form.cost = response.data.data.cost + '元'
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 })
 const confirm = () => {
@@ -118,6 +119,7 @@ const confirm = () => {
             router.replace('/student')
         }).catch((error) => {
             console.log(error)
+            Toast('error', error)
         })
     } else Toast('warning', '必填项不完整')
 }

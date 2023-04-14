@@ -68,6 +68,7 @@ import axios from 'axios';
 import Collapse from '../../components/student/collapse.vue'
 import Table from '../../components/common/table.vue';
 import { ref, reactive, onMounted } from 'vue'
+import { Toast } from '../../components/common/toast';
 const studentprops = reactive({
     title: '已报名课程',
     head: ['课程类别', '课程名称', '报名时间', '状态'],
@@ -116,6 +117,7 @@ onMounted(() => {
 
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
     axios({
         url: "http://kjum.top:8083/student/getAllOptionalCourse",
@@ -133,6 +135,7 @@ onMounted(() => {
         miniprops.courselist = response.data.data.miniProgramList
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 })
 </script>

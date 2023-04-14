@@ -72,6 +72,7 @@ import { useIdStore } from '../../../../store';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
 import { reactive, onMounted } from 'vue';
+import { Toast } from '../../../../components/common/toast';
 const idStore = useIdStore()
 const { id } = storeToRefs(idStore)
 const router = useRouter()
@@ -123,6 +124,7 @@ onMounted(() => {
         form.state = response.data.data.state
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
     axios({
         url: "http://kjum.top:8083/work/getAllTeachers",
@@ -138,6 +140,7 @@ onMounted(() => {
     })
         .catch((error) => {
             console.log(error)
+            Toast('error', error)
         })
     axios({
         url: "http://kjum.top:8083/work/getAllOperators",
@@ -153,6 +156,7 @@ onMounted(() => {
     })
         .catch((error) => {
             console.log(error)
+            Toast('error', error)
         })
     axios({
         url: "http://kjum.top:8083/work/getStudentsInCourse?courseId=" + id.value,
@@ -169,6 +173,7 @@ onMounted(() => {
         }
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
     axios({
         url: "http://kjum.top:8083/work/getAllMoney?courseId=" + id.value,
@@ -182,6 +187,7 @@ onMounted(() => {
         form.monney = response.data.data + "元"
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
     axios({
         url: "http://kjum.top:8083/work/getCourseInvestigation?courseId=" + id.value,
@@ -198,6 +204,7 @@ onMounted(() => {
         }
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 })
 </script>

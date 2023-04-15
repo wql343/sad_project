@@ -13,7 +13,7 @@
             </label>
             <select class="select select-bordered" v-model="form.field">
                 <option disabled selected>请选择方向</option>
-                <option value="web前端开发">web前端</option>
+                <option value="web前端">web前端</option>
                 <option value="后端">后端</option>
                 <option value="App开发">App开发</option>
                 <option value="小程序开发">小程序开发</option>
@@ -47,8 +47,9 @@
             <input type="text" placeholder="place" class="input input-bordered" v-model="form.place" />
         </div>
         <div class="flex w-full mt-6 justify-between">
-            <button class="btn btn-primary w-2/5" @click="confirm">发布课程</button>
-            <button class="btn  w-2/5" @click="$router.replace('/employee/managecourse')">取消</button>
+            <button class="btn btn-primary w-1/4" @click="confirm">发布课程</button>
+            <button class="btn btn-secondary w-1/4" @click="generateHTML">生成HTML</button>
+            <button class="btn  w-1/4" @click="$router.replace('/employee/managecourse')">取消</button>
         </div>
     </div>
 </template>
@@ -58,6 +59,7 @@ import { useIdStore } from '../../../../store';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
 import { reactive, onMounted } from 'vue';
+import { Toast } from '../../../../components/common/toast';
 const idStore = useIdStore()
 const { id } = storeToRefs(idStore)
 const router = useRouter()
@@ -91,6 +93,7 @@ onMounted(() => {
 
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
     axios({
         url: "http://kjum.top:8083/work/getAllTeachers",
@@ -106,6 +109,7 @@ onMounted(() => {
     })
         .catch((error) => {
             console.log(error)
+            Toast('error', error)
         })
 })
 const confirm = () => {
@@ -126,10 +130,37 @@ const confirm = () => {
 
     }).then((response) => {
         console.log(response)
+        if (response.data.code === 10000) {
+            Toast('success', '成功发布课程')
+        } else Toast('error', response.data.msg)
         router.replace('/employee/managecourse')
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 }
+const generateHTML = () => {
+    let teacherStr
+    for (let item of teacherlist) {
+        if (item.id === form.teacherId)
+            teacherStr = item.name
+    }
+    let html = "<html><body><div>"
+    html += `<h1>课程信息</h1>`
+    html += `<h2>课程名称</h2><p>${form.courseName}</p>`
+    html += `<h2>课程方向</h2><p>${form.field}</p>`
+    html += `<h2>讲师</h2><p>${teacherStr}</p>`
+    html += `<h2>课程内容</h2><p>${form.content}</p>`
+    html += `<h2>课程时间</h2><p>${form.time}</p>`
+    html += `<h2>课程地点</h2><p>${form.place}</p>`
+    html += "</div></body></html>"
 
+    const link = document.createElement('a');
+    link.download = "index.html"
+    link.style.display = "none"
+
+    const blob = new Blob([html], { type: "text/html" })
+    link.href = window.URL.createObjectURL(blob)
+    link.click()
+}
 </script>

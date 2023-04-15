@@ -60,6 +60,7 @@ import { useRouter } from "vue-router";
 import { useIdStore } from "../../../../store";
 import { storeToRefs } from "pinia";
 import axios from 'axios'
+import { Toast } from "../../../../components/common/toast";
 const idStore = useIdStore()
 const { id } = storeToRefs(idStore)
 const { setId } = idStore
@@ -92,6 +93,9 @@ const go = (e) => {
 
     }).then((response) => {
         console.log(response)
+        if (response.data.code === 10000) {
+            Toast('success', '签到成功')
+        } else Toast('error', response.data.msg)
         for (let i in table.idlist) {
             if (table.idlist[i] == current.id) {
                 table.list[i][3] = "已签到"
@@ -102,6 +106,7 @@ const go = (e) => {
         nextTick()
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 }
 onMounted(() => {
@@ -126,6 +131,7 @@ onMounted(() => {
         }
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 })
 </script>

@@ -13,8 +13,8 @@
             </label>
             <select disabled class="select select-bordered" v-model="form.field">
                 <option disabled selected>请选择方向</option>
-                <option value="web前端开发">web前端</option>
-                <option value="后端开发">后端</option>
+                <option value="web前端">web前端</option>
+                <option value="后端">后端</option>
                 <option value="App开发">App开发</option>
                 <option value="小程序开发">小程序开发</option>
             </select>
@@ -65,6 +65,7 @@ import { useIdStore } from '../../../../store';
 import { storeToRefs } from 'pinia';
 import { reactive, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { Toast } from '../../../../components/common/toast';
 const router = useRouter()
 const idStore = useIdStore()
 const { id } = storeToRefs(idStore)
@@ -99,6 +100,7 @@ onMounted(() => {
 
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 
     axios({
@@ -117,6 +119,7 @@ onMounted(() => {
 
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 })
 const confirm = () => {
@@ -136,9 +139,13 @@ axios({
 
 }).then((response) => {
     console.log(response)
+    if (response.data.code === 10000) {
+        Toast('success', '添加课程成功')
+    } else Toast('error', response.data.msg)
     router.replace("/employee/manageenroll")
 }).catch((error) => {
     console.log(error)
+    Toast('error', error)
 })
 
 }

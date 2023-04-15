@@ -63,6 +63,7 @@
 <script setup>
 import axios from "axios"
 import { onMounted, reactive } from 'vue';
+import { Toast } from '../../components/common/toast';
 const form = reactive({
     name: '',
     gender: '男',
@@ -98,6 +99,7 @@ onMounted(() => {
         }
     }).catch((error) => {
         console.log(error)
+        Toast('error', error)
     })
 })
 </script>

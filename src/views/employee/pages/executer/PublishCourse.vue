@@ -47,8 +47,9 @@
             <input type="text" placeholder="place" class="input input-bordered" v-model="form.place"/>
         </div>
         <div class="flex w-full mt-6 justify-between">
-            <button class="btn btn-primary w-2/5" @click="confirm">发布课程</button>
-            <button class="btn  w-2/5" @click="$router.replace('/employee/managecourse')">取消</button>
+            <button class="btn btn-primary w-1/4" @click="confirm">发布课程</button>
+            <button class="btn btn-secondary w-1/4" @click="generateHTML">生成HTML</button>
+            <button class="btn  w-1/4" @click="$router.replace('/employee/managecourse')">取消</button>
         </div>
     </div>
 </template>
@@ -138,5 +139,23 @@ const confirm =()=>{
         Toast('error', error)
     })
 }
+const generateHTML = () => {
+    let html = "<html><body><div>"
+    html += `<h1>课程信息</h1>`
+    html += `<h2>课程名称</h2><p>${form.courseName}</p>`
+    html += `<h2>课程方向</h2><p>${form.field}</p>`
+    html += `<h2>讲师</h2><p>${teacherlist[form.teacherId]}</p>`
+    html += `<h2>课程内容</h2><p>${form.content}</p>`
+    html += `<h2>课程时间</h2><p>${form.time}</p>`
+    html += `<h2>课程地点</h2><p>${form.place}</p>`
+    html += "</div></body></html>"
 
+    const link = document.createElement('a');
+    link.download = "index.html"
+    link.style.display = "none"
+
+    const blob = new Blob([html], { type: "text/html" })
+    link.href = window.URL.createObjectURL(blob)
+    link.click()
+}
 </script>

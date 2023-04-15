@@ -140,11 +140,16 @@ const confirm =()=>{
     })
 }
 const generateHTML = () => {
+    let teacherStr
+    for (let item of teacherlist) {
+        if (item.id === form.teacherId)
+            teacherStr = item.name
+    }
     let html = "<html><body><div>"
     html += `<h1>课程信息</h1>`
     html += `<h2>课程名称</h2><p>${form.courseName}</p>`
     html += `<h2>课程方向</h2><p>${form.field}</p>`
-    html += `<h2>讲师</h2><p>${teacherlist[form.teacherId]}</p>`
+    html += `<h2>讲师</h2><p>${teacherStr}</p>`
     html += `<h2>课程内容</h2><p>${form.content}</p>`
     html += `<h2>课程时间</h2><p>${form.time}</p>`
     html += `<h2>课程地点</h2><p>${form.place}</p>`

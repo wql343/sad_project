@@ -105,6 +105,7 @@ const login = () => {
                     break;
             }
             sessionStorage.setItem('token', response.data.data.authToken)
+            sessionStorage.setItem('all', response.data.data)
             Toast('success', "登录成功")
         } else {
             Toast('error', response.data.msg)

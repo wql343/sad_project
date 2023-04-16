@@ -51,8 +51,8 @@
                 </div>
             </div>
         </div> -->
-        <Table :title="studentprops.title" :head="studentprops.head" :list="studentprops.list"
-            :idlist="studentprops.idlist" :path="studentprops.path"></Table>
+        <Table :title="studentprops.title" :head="studentprops.head" :list="studentprops.list" :idlist="studentprops.idlist"
+            :path="studentprops.path"></Table>
         <!-- 分割线 -->
         <div class="text-xl font-black ml-4 mt-8 mb-4">
             可报名课程
@@ -76,7 +76,7 @@ const studentprops = reactive({
 
     ],
     idlist: [],
-    path:"assess"
+    path: "assess"
 
 })
 const webprops = reactive({

@@ -6,9 +6,8 @@
                 <span class="label-text">课程类别</span>
             </label>
             <select class="select select-bordered w-full" v-model="form.field">
-                <option disabled selected value="-1">选择类别</option>
-                <option value="web前端开发">web前端</option>
-                <option value="后端开发">后端</option>
+                <option value="web前端">web前端</option>
+                <option value="后端">后端</option>
                 <option value="App开发">App开发</option>
                 <option value="小程序开发">小程序开发</option>
             </select>

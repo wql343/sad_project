@@ -2,7 +2,7 @@
     <div class="hero min-h-screen bg-base-200">
         <div class="hero-content flex-col lg:flex-row-reverse">
             <div class="text-center lg:text-left">
-                <h1 class="text-5xl font-bold">浩奇 HaoQi</h1>
+                <h1 class="text-5xl font-bold">浩奇</h1>
                 <p class="py-6">浩奇软件开发技术培训公司承揽各种软件开发技术相关培训业务。课程涵盖Web开发、小程序开发、移动应用开发、分布式软件开发、人工智能应用开发、3D应用软件开发、游戏开发等多个领域。</p>
             </div>
             <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

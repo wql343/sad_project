@@ -5,13 +5,13 @@
                 <span class="label-text">课程名称</span>
             </label>
 
-            <input class="input input-bordered" v-model="form.courseName"/>
+            <input class="input input-bordered" v-model="form.courseName" />
         </div>
         <div class="form-control">
             <label class="label">
                 <span class="label-text">课程方向</span>
             </label>
-               <select class="select select-bordered" v-model="form.field">
+            <select class="select select-bordered" v-model="form.field">
                 <option disabled selected>请选择方向</option>
                 <option value="web前端开发">web前端开发</option>
                 <option value="web后端开发">web后端开发</option>
@@ -23,8 +23,8 @@
             <label class="label">
                 <span class="label-text">分配讲师</span>
             </label>
-               <select class="select select-bordered" v-model="form.teacherId">
-                <option :value="-1" disabled selected >请选择讲师</option>
+            <select class="select select-bordered" v-model="form.teacherId">
+                <option :value="-1" disabled selected>请选择讲师</option>
                 <option v-for="item in teacherlist" :value="item.id">{{ item.name }}</option>
             </select>
         </div>
@@ -32,7 +32,7 @@
             <label class="label">
                 <span class="label-text">课程内容</span>
             </label>
-            <textarea type="text" placeholder="main" class="textarea textarea-bordered" v-model="form.content"/>
+            <textarea type="text" placeholder="main" class="textarea textarea-bordered" v-model="form.content" />
         </div>
         <div class="form-control">
             <label class="label">
@@ -44,7 +44,7 @@
             <label class="label">
                 <span class="label-text">上课地点</span>
             </label>
-            <input type="text" placeholder="place" class="input input-bordered" v-model="form.place"/>
+            <input type="text" placeholder="place" class="input input-bordered" v-model="form.place" />
         </div>
         <div class="flex w-full mt-6 justify-between">
             <button class="btn btn-primary w-1/4" @click="confirm">发布课程</button>
@@ -61,18 +61,18 @@ import { useRouter } from 'vue-router';
 import { reactive, onMounted } from 'vue';
 import { Toast } from '../../../../components/common/toast';
 const idStore = useIdStore()
-const {id}=storeToRefs(idStore)
+const { id } = storeToRefs(idStore)
 const router = useRouter()
 const form = reactive({
     courseName: '',
-    field:'',
+    field: '',
     teacherId: -1,
-    content:'',
-    time:'',
-    place:''
+    content: '',
+    time: '',
+    place: ''
 })
 const teacherlist = reactive([])
-onMounted(()=>{
+onMounted(() => {
     axios({
         url: "http://127.0.0.1:8083/student/getCourseInfo?courseId="+id.value,
         method: "get",
@@ -83,12 +83,12 @@ onMounted(()=>{
 
     }).then((response) => {
         console.log(response)
-        form.courseName=response.data.data.courseName
+        form.courseName = response.data.data.courseName
         form.field = response.data.data.field
         form.teacherId = response.data.data.teacherId
         form.content = response.data.data.content
         form.time = response.data.data.time
-        form.place=response.data.data.place
+        form.place = response.data.data.place
         console.log(form)
 
     }).catch((error) => {
@@ -112,16 +112,16 @@ onMounted(()=>{
             Toast('error', error)
         })
 })
-const confirm =()=>{
+const confirm = () => {
     axios({
         url: "http://127.0.0.1:8083/work/completeAndLaunchNewCourse",
         method: "post",
-        data:{
-            content:form.content,
+        data: {
+            content: form.content,
             time: form.time,
             place: form.place,
-            courseId:id.value,
-            teacherId:form.teacherId,
+            courseId: id.value,
+            teacherId: form.teacherId,
         },
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

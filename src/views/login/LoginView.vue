@@ -3,7 +3,7 @@
         <div class="hero-content flex-col lg:flex-row-reverse">
             <div class="text-center lg:text-left">
                 <h1 class="text-5xl font-bold">浩奇</h1>
-                <p class="py-6">选择你的身份并高效完成任务吧！</p>
+                <p class="py-6">浩奇软件开发技术培训公司承揽各种软件开发技术相关培训业务。课程涵盖Web开发、小程序开发、移动应用开发、分布式软件开发、人工智能应用开发、3D应用软件开发、游戏开发等多个领域。</p>
             </div>
             <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <div class="card-body">
@@ -71,7 +71,7 @@ const login = () => {
         Toast('warning', '请选择身份')
     } else
     axios({
-        url: "http://kjum.top:8083/dologin",
+        url: "http://127.0.0.1:8083/dologin",
         method: 'post',
         data: {
             account: form.account,
@@ -87,21 +87,30 @@ const login = () => {
                 case 0: {
                     if (response.data.data.role == 1) {
                         router.replace('/student');
+                    } else {
+                        Toast('error', "用户权限不足")
+                        return;
                     }
                 };
-                    break;
+                break;
                 case 1: {
                     if (response.data.data.forCompany) {
                         router.replace('/company');
+                    } else {
+                        Toast('error', "用户权限不足")
+                        return;
                     }
                 };
-                    break;
+                break;
                 case 2: {
                     if (response.data.data.manager || response.data.data.operater || response.data.data.presenter) {
                         router.replace('/employee');
+                    } else {
+                        Toast('error', "用户权限不足")
+                        return;
                     }
                 };
-                    break;
+                break;
             }
             sessionStorage.setItem('token', response.data.data.authToken)
             Toast('success', "登录成功")

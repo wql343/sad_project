@@ -13,9 +13,9 @@
             </label>
             <select class="select select-bordered" v-model="form.field">
                 <option disabled selected>请选择方向</option>
-                <option value="web前端">web前端</option>
-                <option value="后端">后端</option>
-                <option value="App开发">App开发</option>
+                <option value="web前端开发">web前端开发</option>
+                <option value="web后端开发">web后端开发</option>
+                <option value="移动应用开发">移动应用开发</option>
                 <option value="小程序开发">小程序开发</option>
             </select>
         </div>
@@ -74,7 +74,7 @@ const form = reactive({
 const teacherlist = reactive([])
 onMounted(() => {
     axios({
-        url: "http://kjum.top:8083/student/getCourseInfo?courseId=" + id.value,
+        url: "http://127.0.0.1:8083/student/getCourseInfo?courseId="+id.value,
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -96,7 +96,7 @@ onMounted(() => {
         Toast('error', error)
     })
     axios({
-        url: "http://kjum.top:8083/work/getAllTeachers",
+        url: "http://127.0.0.1:8083/work/getAllTeachers",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -114,7 +114,7 @@ onMounted(() => {
 })
 const confirm = () => {
     axios({
-        url: "http://kjum.top:8083/work/completeAndLaunchNewCourse",
+        url: "http://127.0.0.1:8083/work/completeAndLaunchNewCourse",
         method: "post",
         data: {
             content: form.content,

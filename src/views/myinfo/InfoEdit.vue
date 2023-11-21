@@ -80,7 +80,7 @@ const form = reactive({
 const confirm = () => {
     console.log(form)
     axios({
-        url: "http://kjum.top:8083/student/completeMyInfo",
+        url: "http://127.0.0.1:8083/student/completeMyInfo",
         method: "post",
         data: form,
         headers: {
@@ -101,7 +101,7 @@ const confirm = () => {
 }
 onMounted(() => {
     axios({
-        url: "http://kjum.top:8083/student/getMyInfo",
+        url: "http://127.0.0.1:8083/student/getMyInfo",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

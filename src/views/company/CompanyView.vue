@@ -41,7 +41,7 @@ const add = () => {
 }
 onMounted(()=>{
     axios({
-        url: "http://kjum.top:8083/work/getMyApplicationForCompany",
+        url: "http://127.0.0.1:8083/work/getMyApplicationForCompany",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

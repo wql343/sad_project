@@ -1,6 +1,7 @@
 <template>
-    <div class="mx-auto w-4/5 my-4 overscroll-auto">
-        <!-- <div class="collapse collapse-arrow rounded-lg">
+    <div class="h-full overflow-scroll">
+        <div class="mx-auto w-4/5 my-4 overscroll-auto">
+            <!-- <div class="collapse collapse-arrow rounded-lg">
             <input type="checkbox" class="peer" checked @click="change" />
             <div class="collapse-title bg-info text-info-content peer-checked:bg-base-200 peer-checked:text-base-content">
                 <div class="text-xl font-black">
@@ -51,16 +52,17 @@
                 </div>
             </div>
         </div> -->
-        <Table :title="studentprops.title" :head="studentprops.head" :list="studentprops.list" :idlist="studentprops.idlist"
-            :path="studentprops.path"></Table>
-        <!-- 分割线 -->
-        <div class="text-xl font-black ml-4 mt-8 mb-4">
-            可报名课程
+            <Table :title="studentprops.title" :head="studentprops.head" :list="studentprops.list"
+                :idlist="studentprops.idlist" :path="studentprops.path"></Table>
+            <!-- 分割线 -->
+            <div class="text-xl font-black ml-4 mt-8 mb-4">
+                可报名课程
+            </div>
+            <Collapse :title="webprops.title" :courselist="webprops.courselist" />
+            <Collapse :title="backendprops.title" :courselist="backendprops.courselist" />
+            <Collapse :title="appprops.title" :courselist="appprops.courselist" />
+            <Collapse :title="miniprops.title" :courselist="miniprops.courselist" />
         </div>
-        <Collapse :title="webprops.title" :courselist="webprops.courselist" />
-        <Collapse :title="backendprops.title" :courselist="backendprops.courselist" />
-        <Collapse :title="appprops.title" :courselist="appprops.courselist" />
-        <Collapse :title="miniprops.title" :courselist="miniprops.courselist" />
     </div>
 </template>
 <script setup>
@@ -80,15 +82,15 @@ const studentprops = reactive({
 
 })
 const webprops = reactive({
-    title: 'web前端',
+    title: 'web前端开发',
     courselist: []
 })
 const backendprops = reactive({
-    title: '后端',
+    title: 'web后端开发',
     courselist: []
 })
 const appprops = reactive({
-    title: 'App开发',
+    title: '移动应用开发',
     courselist: []
 })
 const miniprops = reactive({
@@ -97,7 +99,7 @@ const miniprops = reactive({
 })
 onMounted(() => {
     axios({
-        url: "http://kjum.top:8083/student/getMyCourse",
+        url: "http://127.0.0.1:8083/student/getMyCourse",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -120,7 +122,7 @@ onMounted(() => {
         Toast('error', error)
     })
     axios({
-        url: "http://kjum.top:8083/student/getAllOptionalCourse",
+        url: "http://127.0.0.1:8083/student/getAllOptionalCourse",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

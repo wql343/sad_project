@@ -1,6 +1,6 @@
 
 <template>
-    <div class="navbar bg-base-100 sticky top-0 z-50 "
+    <div class="navbar bg-base-100 sticky top-0 z-50 shrink-0"
         v-if="router.currentRoute.value.path != '/register' && router.currentRoute.value.path != '/login'">
         <!-- <div class="w-12" v-if="router.currentRoute.value.path!= '/employee' "></div> -->
         <div class="flex-1">

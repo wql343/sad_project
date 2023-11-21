@@ -3,7 +3,7 @@
         <div class="hero-content flex-col lg:flex-row-reverse">
             <div class="text-center lg:text-left">
                 <h1 class="text-5xl font-bold">浩奇</h1>
-                <p class="py-6">选择你想要报名的课程，快速学习吧</p>
+                <p class="py-6">浩奇软件开发技术培训公司承揽各种软件开发技术相关培训业务。课程涵盖Web开发、小程序开发、移动应用开发、分布式软件开发、人工智能应用开发、3D应用软件开发、游戏开发等多个领域。</p>
             </div>
             <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <div class="card-body">
@@ -60,7 +60,7 @@ const register = () => {
     if (form.account && form.name && form.password && form.confirmpassword) {
         if (form.password === form.confirmpassword) {
             axios({
-                url: "http://kjum.top:8083/doregist",
+                url: "http://127.0.0.1:8083/doregist",
                 method: "post",
                 data: {
                     account: form.account,

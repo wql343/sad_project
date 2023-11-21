@@ -84,7 +84,7 @@ const go = (e) => {
     setId(e.currentTarget.id)
     console.log(id.value)
     axios({
-        url: "http://kjum.top:8083/work/doAssign?assignId=" + id.value,
+        url: "http://127.0.0.1:8083/work/doAssign?assignId=" + id.value,
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -111,7 +111,7 @@ const go = (e) => {
 }
 onMounted(() => {
     axios({
-        url: "http://kjum.top:8083/work/getAssignStudentsInCourse?courseId=" + id.value,
+        url: "http://127.0.0.1:8083/work/getAssignStudentsInCourse?courseId=" + id.value,
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

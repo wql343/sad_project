@@ -20,7 +20,7 @@ const courseprops = reactive({
 })
 onMounted(()=>{
     axios({
-        url: "http://kjum.top:8083/work/getAllCourse",
+        url: "http://127.0.0.1:8083/work/getAllCourse",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -46,7 +46,7 @@ onMounted(()=>{
         Toast('error', error)
 })
 axios({
-        url: "http://kjum.top:8083/work/getAllTeachers",
+        url: "http://127.0.0.1:8083/work/getAllTeachers",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

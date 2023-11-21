@@ -13,9 +13,9 @@
             </label>
             <select disabled class="select select-bordered" v-model="form.field">
                 <option disabled selected>请选择方向</option>
-                <option value="web前端">web前端</option>
-                <option value="后端">后端</option>
-                <option value="App开发">App开发</option>
+                <option value="web前端开发">web前端开发</option>
+                <option value="web后端开发">web后端开发</option>
+                <option value="移动应用开发">移动应用开发</option>
                 <option value="小程序开发">小程序开发</option>
             </select>
         </div>
@@ -81,7 +81,7 @@ const form = reactive({
 const exelist = reactive([])
 onMounted(() => {
     axios({
-        url: "http://kjum.top:8083/work/getApplicationInfo?id=" + id.value,
+        url: "http://127.0.0.1:8083/work/getApplicationInfo?id=" + id.value,
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -104,7 +104,7 @@ onMounted(() => {
     })
 
     axios({
-        url: "http://kjum.top:8083/work/getAllOperators",
+        url: "http://127.0.0.1:8083/work/getAllOperators",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -125,7 +125,7 @@ onMounted(() => {
 const confirm = () => {
 
 axios({
-    url: "http://kjum.top:8083/work/addNewCourse",
+    url: "http://127.0.0.1:8083/work/addNewCourse",
     method: "post",
     data: {
         applicationId: id.value,

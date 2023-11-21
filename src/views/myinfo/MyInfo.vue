@@ -77,7 +77,7 @@ const form = reactive({
 })
 onMounted(() => {
     axios({
-        url: "http://kjum.top:8083/student/getMyInfo",
+        url: "http://127.0.0.1:8083/student/getMyInfo",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

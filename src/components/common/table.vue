@@ -19,7 +19,7 @@
                     </thead>
                     <tbody>
                         <!-- row 1 -->
-                        <tr v-for="(main, index) in props.list" class="hover cursor-pointer" @click="go($event)"
+                        <tr v-for="(main, index) in props.list" class="hover cursor-default" @click="go($event)"
                             :id="props.idlist[index]">
                             <th>{{ index + 1 }}</th>
                             <td v-for="item in main" :innerHTML="item"></td>

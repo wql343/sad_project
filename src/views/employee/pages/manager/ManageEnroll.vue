@@ -31,7 +31,7 @@ const neverprops = reactive({
 })
 onMounted(() => {
     axios({
-        url: "http://kjum.top:8083/work/getAllApplicationUndone",
+        url: "http://127.0.0.1:8083/work/getAllApplicationUndone",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -52,7 +52,7 @@ onMounted(() => {
         Toast('error', error)
     })
     axios({
-        url: "http://kjum.top:8083/work/getAllApplicationDone",
+        url: "http://127.0.0.1:8083/work/getAllApplicationDone",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

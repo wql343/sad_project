@@ -107,7 +107,7 @@ const exelist = reactive([])
 onMounted(() => {
     console.log(id.value)
     axios({
-        url: "http://kjum.top:8083/student/getCourseInfo?courseId=" + id.value,
+        url: "http://127.0.0.1:8083/student/getCourseInfo?courseId=" + id.value,
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -127,7 +127,7 @@ onMounted(() => {
         Toast('error', error)
     })
     axios({
-        url: "http://kjum.top:8083/work/getAllTeachers",
+        url: "http://127.0.0.1:8083/work/getAllTeachers",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -143,7 +143,7 @@ onMounted(() => {
             Toast('error', error)
         })
     axios({
-        url: "http://kjum.top:8083/work/getAllOperators",
+        url: "http://127.0.0.1:8083/work/getAllOperators",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -159,7 +159,7 @@ onMounted(() => {
             Toast('error', error)
         })
     axios({
-        url: "http://kjum.top:8083/work/getStudentsInCourse?courseId=" + id.value,
+        url: "http://127.0.0.1:8083/work/getStudentsInCourse?courseId=" + id.value,
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -176,7 +176,7 @@ onMounted(() => {
         Toast('error', error)
     })
     axios({
-        url: "http://kjum.top:8083/work/getAllMoney?courseId=" + id.value,
+        url: "http://127.0.0.1:8083/work/getAllMoney?courseId=" + id.value,
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -190,7 +190,7 @@ onMounted(() => {
         Toast('error', error)
     })
     axios({
-        url: "http://kjum.top:8083/work/getCourseInvestigation?courseId=" + id.value,
+        url: "http://127.0.0.1:8083/work/getCourseInvestigation?courseId=" + id.value,
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

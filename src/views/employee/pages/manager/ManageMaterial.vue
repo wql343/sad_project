@@ -20,7 +20,11 @@
         <div class="modal modal-bottom sm:modal-middle">
             <div class="modal-box">
                 <h3 class="font-bold text-lg mb-8">选择excel文件批量导入讲师</h3>
+                <p class="mb-2">文件中的表格需包含<span class="font-bold">工号、姓名、职称、方向、邮箱、电话、备注</span>七列</p>
                 <input type="file" class="file-input file-input-bordered w-full max-w-xs" @change="getteacher($event)" />
+                <a href="/public/讲师导入表模板.xlsx">
+                    <button class="btn btn-ghost">下载模板</button>
+                </a>
                 <div class="modal-action">
                     <label for="my-modal-6" class="btn btn-primary" @click="confirm()">确定</label>
                     <label for="my-modal-6" class="btn">取消</label>
@@ -92,7 +96,7 @@ const getteacher = (e) => {
 }
 const confirm = () => {
     axios({
-        url: "http://kjum.top:8083/work/updateTeachersInfo",
+        url: "http://127.0.0.1:8083/work/updateTeachersInfo",
         method: 'post',
         data: form,
         headers: {
@@ -102,7 +106,7 @@ const confirm = () => {
     }).then((response) => {
         console.log(response)
         axios({
-            url: "http://kjum.top:8083/work/getAllTeachers",
+            url: "http://127.0.0.1:8083/work/getAllTeachers",
             method: "get",
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -128,7 +132,7 @@ const confirm = () => {
 
 onMounted(() => {
     axios({
-        url: "http://kjum.top:8083/work/getAllStudents",
+        url: "http://127.0.0.1:8083/work/getAllStudents",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -146,7 +150,7 @@ onMounted(() => {
         Toast('error', error)
     })
     axios({
-        url: "http://kjum.top:8083/work/getAllTeachers",
+        url: "http://127.0.0.1:8083/work/getAllTeachers",
         method: "get",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
